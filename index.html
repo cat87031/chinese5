@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>114學年度上學期二年級國語南一版 - 第五課小書蟲</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft JhengHei", "Heiti TC", "LiHei Pro", sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #e0f7fa 0%, #bbdefb 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .quick-nav {
+            position: sticky;
+            top: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 100;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .nav-btn {
+            padding: 8px 15px;
+            background: linear-gradient(to right, #4CAF50, #2E7D32);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #4CAF50;
+            background: linear-gradient(to right, #E8F5E9, #C8E6C9);
+            padding: 20px;
+            border-radius: 15px;
+        }
+        
+        h1 {
+            color: #2E7D32;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #388E3C;
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #C8E6C9;
+        }
+        
+        h3 {
+            color: #4CAF50;
+            margin: 20px 0 10px;
+        }
+        
+        .lesson-content {
+            background: #E8F5E9;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            line-height: 2.2;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .bopomofo {
+            font-size: 0.8em;
+            color: #FF5722;
+            vertical-align: top;
+            margin-right: 2px;
+        }
+        
+        .vocabulary-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 18px;
+            margin: 25px 0;
+        }
+        
+        .vocabulary-item {
+            background: linear-gradient(to bottom, #E8F5E9, #C8E6C9);
+            padding: 18px 12px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid #A5D6A7;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vocabulary-item:hover, .vocabulary-item.active {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            background: linear-gradient(to bottom, #C8E6C9, #A5D6A7);
+            border-color: #4CAF50;
+        }
+        
+        .vocabulary-item .bopomofo-small {
+            display: block;
+            font-size: 0.9rem;
+            color: #FF5722;
+            margin-top: 5px;
+        }
+        
+        .similar-characters, .polyphonic-characters {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        .character-group {
+            background: #F1F8E9;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .character-group:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        
+        .character-group h3 {
+            text-align: center;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #C8E6C9;
+            color: #2E7D32;
+        }
+        
+        .character-group ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        
+        .character-group li {
+            padding: 8px 0;
+            font-size: 1.2rem;
+            border-bottom: 1px dashed #C8E6C9;
+        }
+        
+        .character-group li:last-child {
+            border-bottom: none;
+        }
+        
+        .character-detail {
+            display: none;
+            background: linear-gradient(to bottom, #E8F5E9, #F1F8E9);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 2px solid #A5D6A7;
+        }
+        
+        .character-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        
+        .character-large {
+            font-size: 140px;
+            line-height: 1;
+            color: #2E7D32;
+            text-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+            margin-right: 30px;
+        }
+        
+        .character-info-basic {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        
+        .character-info-basic p {
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+        
+        .character-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        .info-section {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        
+        .info-section h3 {
+            color: #2E7D32;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-section h3 i {
+            margin-right: 10px;
+            color: #4CAF50;
+        }
+        
+        .info-section ul {
+            padding-left: 25px;
+            margin-top: 15px;
+        }
+        
+        .info-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .external-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .external-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #4CAF50, #2E7D32);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .external-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background: linear-gradient(to right, #2E7D32, #1B5E20);
+        }
+        
+        .download-btn {
+            display: block;
+            width: 250px;
+            margin: 40px auto;
+            padding: 15px;
+            background: linear-gradient(to right, #4CAF50, #2E7D32);
+            color: white;
+            text-align: center;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            background: linear-gradient(to right, #2E7D32, #1B5E20);
+        }
+        
+        .highlight {
+            background: #FFF9C4;
+            padding: 0 5px;
+            border-radius: 4px;
+        }
+        
+        .section-icon {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .similar-characters .bopomofo, .polyphonic-characters .bopomofo {
+            font-size: 0.7em;
+        }
+        
+        .polyphonic-group {
+            margin-bottom: 25px;
+        }
+        
+        .polyphonic-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .polyphonic-title .character {
+            font-size: 2rem;
+            margin-right: 15px;
+            color: #2E7D32;
+        }
+        
+        @media (max-width: 900px) {
+            .character-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .character-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .character-large {
+                margin-right: 0;
+                margin-bottom: 20px;
+                font-size: 100px;
+            }
+            
+            .similar-characters, .polyphonic-characters {
+                grid-template-columns: 1fr;
+            }
+            
+            .external-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .quick-nav {
+                position: static;
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .vocabulary-list {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+            
+            .character-large {
+                font-size: 80px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .lesson-content {
+                font-size: 1.1rem;
+                padding: 15px;
+            }
+            
+            .nav-btn {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quick-nav">
+            <button class="nav-btn" onclick="scrollToSection('lesson-content')">課文內容</button>
+            <button class="nav-btn" onclick="scrollToSection('vocabulary')">生字總表</button>
+            <button class="nav-btn" onclick="scrollToSection('similar-characters')">形近字比較</button>
+            <button class="nav-btn" onclick="scrollToSection('polyphonic')">多音字比較</button>
+        </div>
+
+        <header>
+            <h1><i class="fas fa-book-open"></i> 114學年度上學期二年級國語</h1>
+            <h2>南一版 - 第五課：小書蟲</h2>
+        </header>
+        
+        <section id="lesson-content">
+            <h2><span class="section-icon">1</span> 課文內容</h2>
+            <div class="lesson-content">
+                <p>第<span class="bopomofo">ㄉㄧˋ</span>五<span class="bopomofo">ㄨˇ</span>課<span class="bopomofo">ㄎㄜˋ</span>　小<span class="bopomofo">ㄒㄧㄠˇ</span>書<span class="bopomofo">ㄕㄨ</span>蟲<span class="bopomofo">ㄔㄨㄥˊ</span></p>
+                <p>　　<span class="bopomofo">ㄙㄣ</span>森<span class="bopomofo">ㄌㄧㄣˇ</span>林<span class="bopomofo">ㄌㄧˇ</span>裡<span class="bopomofo">ㄌㄧˇ</span>有<span class="bopomofo">ㄧㄡˇ</span>許<span class="bopomofo">ㄒㄩˇ</span>多<span class="bopomofo">ㄉㄨㄛ</span><span class="bopomofo">ㄉㄨㄥˋ</span>動<span class="bopomofo">ㄨˋ</span>物<span class="bopomofo">ㄨˋ</span>，<span class="bopomofo">ㄅㄨˋ</span>布<span class="bopomofo">ㄅㄨˋ</span>布<span class="bopomofo">ㄅㄨˋ</span>是<span class="bopomofo">ㄕˋ</span>喜<span class="bopomofo">ㄒㄧˇ</span>歡<span class="bopomofo">ㄏㄨㄢ</span>看<span class="bopomofo">ㄎㄢˋ</span>書<span class="bopomofo">ㄕㄨ</span>的<span class="bopomofo">˙ㄉㄜ</span>「<span class="bopomofo">ㄒㄧㄠˇ</span>小<span class="bopomofo">ㄕㄨ</span>書<span class="bopomofo">ㄔㄨㄥˊ</span>蟲<span class="bopomofo">ㄔㄨㄥˊ</span>」，<span class="bopomofo">ㄅㄟˋ</span>貝<span class="bopomofo">ㄅㄟˋ</span>貝<span class="bopomofo">ㄅㄟˋ</span>是<span class="bopomofo">ㄕˋ</span>愛<span class="bopomofo">ㄞˋ</span>問<span class="bopomofo">ㄨㄣˋ</span>為<span class="bopomofo">ㄨㄟˋ</span>什<span class="bopomofo">˙ㄕㄣ</span>麼<span class="bopomofo">˙ㄇㄜ</span>的<span class="bopomofo">˙ㄉㄜ</span>「<span class="bopomofo">ㄏㄠˋ</span>好<span class="bopomofo">ㄑㄧˊ</span>奇<span class="bopomofo">ㄉㄚˋ</span>大<span class="bopomofo">ㄨㄤˊ</span>王<span class="bopomofo">ㄨㄤˊ</span>」。</p>
+                <p>　　<span class="bopomofo">ㄧㄡˇ</span>有<span class="bopomofo">ㄧ</span>一<span class="bopomofo">ㄊㄧㄢ</span>天<span class="bopomofo">ㄊㄧㄢ</span>，<span class="bopomofo">ㄅㄟˋ</span>貝<span class="bopomofo">ㄅㄟˋ</span>貝<span class="bopomofo">ㄅㄟˋ</span><span class="bopomofo">ㄗㄨㄛˋ</span>坐<span class="bopomofo">ㄗㄨㄛˋ</span>在<span class="bopomofo">ㄗㄞˋ</span>樹<span class="bopomofo">ㄕㄨˋ</span>上<span class="bopomofo">ㄕㄤˋ</span>問<span class="bopomofo">ㄨㄣˋ</span>：「<span class="bopomofo">ㄕˋ</span>世<span class="bopomofo">ㄕˋ</span>界<span class="bopomofo">ㄐㄧㄝˋ</span>上<span class="bopomofo">ㄕㄤˋ</span>最<span class="bopomofo">ㄗㄨㄟˋ</span>高<span class="bopomofo">ㄍㄠ</span>的<span class="bopomofo">˙ㄉㄜ</span><span class="bopomofo">ㄉㄨㄥˋ</span>動<span class="bopomofo">ㄨˋ</span>物<span class="bopomofo">ㄨˋ</span>是<span class="bopomofo">ㄕˋ</span>誰<span class="bopomofo">ㄕㄟˊ</span>呢<span class="bopomofo">˙ㄋㄜ</span>？」<span class="bopomofo">ㄅㄨˋ</span>布<span class="bopomofo">ㄅㄨˋ</span>布<span class="bopomofo">ㄅㄨˋ</span>說<span class="bopomofo">ㄕㄨㄛ</span>：「<span class="bopomofo">ㄚ</span>啊<span class="bopomofo">ㄚ</span>！<span class="bopomofo">ㄨㄛˇ</span>我<span class="bopomofo">ㄒㄧㄤˇ</span>想<span class="bopomofo">ㄒㄧㄤˇ</span>想<span class="bopomofo">ㄒㄧㄤˇ</span>！<span class="bopomofo">ㄨㄛˇ</span>我<span class="bopomofo">ㄏㄠˇ</span>好<span class="bopomofo">ㄒㄧㄤˋ</span>像<span class="bopomofo">ㄒㄧㄤˋ</span>在<span class="bopomofo">ㄗㄞˋ</span>書<span class="bopomofo">ㄕㄨ</span>上<span class="bopomofo">ㄕㄤˋ</span>看<span class="bopomofo">ㄎㄢˋ</span>過<span class="bopomofo">ㄍㄨㄛˋ</span>。」</p>
+                <p>　　<span class="bopomofo">ㄒㄧㄚˋ</span>下<span class="bopomofo">ㄨˇ</span>午<span class="bopomofo">ㄨˇ</span>，<span class="bopomofo">ㄩˇ</span>雨<span class="bopomofo">ㄩˇ</span><span class="bopomofo">ㄊㄧㄥˊ</span>停<span class="bopomofo">ㄊㄧㄥˊ</span>了<span class="bopomofo">˙ㄌㄜ</span>，<span class="bopomofo">ㄊㄧㄢ</span>天<span class="bopomofo">ㄎㄨㄥ</span>空<span class="bopomofo">ㄎㄨㄥ</span>出<span class="bopomofo">ㄔㄨ</span>現<span class="bopomofo">ㄒㄧㄢˋ</span>一<span class="bopomofo">ㄧ</span>座<span class="bopomofo">ㄗㄨㄛˋ</span>座<span class="bopomofo">ㄗㄨㄛˋ</span>彩<span class="bopomofo">ㄘㄞˇ</span>色<span class="bopomofo">ㄙㄜˋ</span>的<span class="bopomofo">˙ㄉㄜ</span>橋<span class="bopomofo">ㄑㄧㄠˊ</span>。<span class="bopomofo">ㄅㄟˋ</span>貝<span class="bopomofo">ㄅㄟˋ</span>貝<span class="bopomofo">ㄅㄟˋ</span>好<span class="bopomofo">ㄏㄠˇ</span>想<span class="bopomofo">ㄒㄧㄤˇ</span>知<span class="bopomofo">ㄓ</span>道<span class="bopomofo">ㄉㄠˋ</span>那<span class="bopomofo">ㄋㄚˋ</span>是<span class="bopomofo">ㄕˋ</span>什<span class="bopomofo">˙ㄕㄣ</span>麼<span class="bopomofo">˙ㄇㄜ</span>，就<span class="bopomofo">ㄐㄧㄡˋ</span>急<span class="bopomofo">ㄐㄧˊ</span>著<span class="bopomofo">˙ㄓㄜ</span>去<span class="bopomofo">ㄑㄩˋ</span>找<span class="bopomofo">ㄓㄠˇ</span>布<span class="bopomofo">ㄅㄨˋ</span>布<span class="bopomofo">ㄅㄨˋ</span>。<span class="bopomofo">ㄅㄨˋ</span>布<span class="bopomofo">ㄅㄨˋ</span>布<span class="bopomofo">ㄅㄨˋ</span>帶<span class="bopomofo">ㄉㄞˋ</span>著<span class="bopomofo">˙ㄓㄜ</span>貝<span class="bopomofo">ㄅㄟˋ</span>貝<span class="bopomofo">ㄅㄟˋ</span>走<span class="bopomofo">ㄗㄡˇ</span>進<span class="bopomofo">ㄐㄧㄣˋ</span>圖<span class="bopomofo">ㄊㄨˊ</span>書<span class="bopomofo">ㄕㄨ</span>館<span class="bopomofo">ㄍㄨㄢˇ</span>，打<span class="bopomofo">ㄉㄚˇ</span>開<span class="bopomofo">ㄎㄞ</span>百<span class="bopomofo">ㄅㄞˇ</span>科<span class="bopomofo">ㄎㄜ</span>全<span class="bopomofo">ㄑㄩㄢˊ</span>書<span class="bopomofo">ㄕㄨ</span>後<span class="bopomofo">ㄏㄡˋ</span>，才<span class="bopomofo">ㄘㄞˊ</span>知<span class="bopomofo">ㄓ</span>道<span class="bopomofo">ㄉㄠˋ</span>天<span class="bopomofo">ㄊㄧㄢ</span>空<span class="bopomofo">ㄎㄨㄥ</span>中<span class="bopomofo">ㄓㄨㄥ</span>的<span class="bopomofo">˙ㄉㄜ</span>那<span class="bopomofo">ㄋㄚˋ</span>座<span class="bopomofo">ㄗㄨㄛˋ</span>橋<span class="bopomofo">ㄑㄧㄠˊ</span>就<span class="bopomofo">ㄐㄧㄡˋ</span>是<span class="bopomofo">ㄕˋ</span>「<span class="bopomofo">ㄘㄞˇ</span>彩<span class="bopomofo">ㄏㄨㄥˊ</span>虹<span class="bopomofo">ㄏㄨㄥˊ</span>」。<span class="bopomofo">ㄅㄟˋ</span>貝<span class="bopomofo">ㄅㄟˋ</span>貝<span class="bopomofo">ㄅㄟˋ</span>開<span class="bopomofo">ㄎㄞ</span>心<span class="bopomofo">ㄒㄧㄣ</span>的<span class="bopomofo">˙ㄉㄜ</span>說<span class="bopomofo">ㄕㄨㄛ</span>：「<span class="bopomofo">ㄩㄢˊ</span>原<span class="bopomofo">ㄌㄞˊ</span>來<span class="bopomofo">ㄌㄞˊ</span>，<span class="bopomofo">ㄨㄛˇ</span>我<span class="bopomofo">ㄒㄧㄤˇ</span>想<span class="bopomofo">ㄒㄧㄤˇ</span>知<span class="bopomofo">ㄓ</span>道<span class="bopomofo">ㄉㄠˋ</span>的<span class="bopomofo">˙ㄉㄜ</span>，書<span class="bopomofo">ㄕㄨ</span>裡<span class="bopomofo">ㄌㄧˇ</span>都<span class="bopomofo">ㄉㄡ</span>找<span class="bopomofo">ㄓㄠˇ</span>得<span class="bopomofo">˙ㄉㄜ</span>到<span class="bopomofo">ㄉㄠˋ</span>。」</p>
+                <p>　　<span class="bopomofo">ㄘㄨㄥˊ</span>從<span class="bopomofo">ㄘˇ</span>此<span class="bopomofo">ㄘˇ</span>，不<span class="bopomofo">ㄅㄨˋ</span>管<span class="bopomofo">ㄍㄨㄢˇ</span>哪<span class="bopomofo">ㄋㄚˇ</span>一<span class="bopomofo">ㄧ</span>種<span class="bopomofo">ㄓㄨㄥˇ</span>書<span class="bopomofo">ㄕㄨ</span>，貝<span class="bopomofo">ㄅㄟˋ</span>貝<span class="bopomofo">ㄅㄟˋ</span>都<span class="bopomofo">ㄉㄡ</span>喜<span class="bopomofo">ㄒㄧˇ</span>歡<span class="bopomofo">ㄏㄨㄢ</span>看<span class="bopomofo">ㄎㄢˋ</span>。<span class="bopomofo">ㄙㄣ</span>森<span class="bopomofo">ㄌㄧㄣˇ</span>林<span class="bopomofo">ㄌㄧˇ</span>裡<span class="bopomofo">ㄌㄧˇ</span>的<span class="bopomofo">˙ㄉㄜ</span>好<span class="bopomofo">ㄏㄠˋ</span>奇<span class="bopomofo">ㄑㄧˊ</span>大<span class="bopomofo">ㄉㄚˋ</span>王<span class="bopomofo">ㄨㄤˊ</span>，也<span class="bopomofo">ㄧㄝˇ</span>成<span class="bopomofo">ㄔㄥˊ</span>為<span class="bopomofo">ㄨㄟˋ</span>愛<span class="bopomofo">ㄞˋ</span>看<span class="bopomofo">ㄎㄢˋ</span>書<span class="bopomofo">ㄕㄨ</span>的<span class="bopomofo">˙ㄉㄜ</span>小<span class="bopomofo">ㄒㄧㄠˇ</span>書<span class="bopomofo">ㄕㄨ</span>蟲<span class="bopomofo">ㄔㄨㄥˊ</span>了<span class="bopomofo">˙ㄌㄜ</span>。</p>
+            </div>
+        </section>
+        
+        <section id="vocabulary">
+            <h2><span class="section-icon">2</span> 生字總表</h2>
+            <div class="vocabulary-list">
+                <div class="vocabulary-item" onclick="showCharacterDetail('蟲', 'ㄔㄨㄥˊ', '虫', 18, '左右結構', this)">
+                    蟲 <span class="bopomofo-small">ㄔㄨㄥˊ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('森', 'ㄙㄣ', '木', 12, '品字結構', this)">
+                    森 <span class="bopomofo-small">ㄙㄣ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('動', 'ㄉㄨㄥˋ', '力', 11, '左右結構', this)">
+                    動 <span class="bopomofo-small">ㄉㄨㄥˋ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('物', 'ㄨˋ', '牛', 8, '左右結構', this)">
+                    物 <span class="bopomofo-small">ㄨˋ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('王', 'ㄨㄤˊ', '王', 4, '獨體字', this)">
+                    王 <span class="bopomofo-small">ㄨㄤˊ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('坐', 'ㄗㄨㄛˋ', '土', 7, '上下結構', this)">
+                    坐 <span class="bopomofo-small">ㄗㄨㄛˋ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('午', 'ㄨˇ', '十', 4, '獨體字', this)">
+                    午 <span class="bopomofo-small">ㄨˇ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('停', 'ㄊㄧㄥˊ', '人', 11, '左右結構', this)">
+                    停 <span class="bopomofo-small">ㄊㄧㄥˊ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('座', 'ㄗㄨㄛˋ', '广', 10, '半包圍結構', this)">
+                    座 <span class="bopomofo-small">ㄗㄨㄛˋ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('急', 'ㄐㄧˊ', '心', 9, '上下結構', this)">
+                    急 <span class="bopomofo-small">ㄐㄧˊ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('百', 'ㄅㄞˇ', '白', 6, '上下結構', this)">
+                    百 <span class="bopomofo-small">ㄅㄞˇ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('科', 'ㄎㄜ', '禾', 9, '左右結構', this)">
+                    科 <span class="bopomofo-small">ㄎㄜ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('全', 'ㄑㄩㄢˊ', '入', 6, '上下結構', this)">
+                    全 <span class="bopomofo-small">ㄑㄩㄢˊ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('原', 'ㄩㄢˊ', '厂', 10, '半包圍結構', this)">
+                    原 <span class="bopomofo-small">ㄩㄢˊ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('從', 'ㄘㄨㄥˊ', '彳', 11, '左右結構', this)">
+                    從 <span class="bopomofo-small">ㄘㄨㄥˊ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('此', 'ㄘˇ', '止', 6, '左右結構', this)">
+                    此 <span class="bopomofo-small">ㄘˇ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('管', 'ㄍㄨㄢˇ', '竹', 14, '上下結構', this)">
+                    管 <span class="bopomofo-small">ㄍㄨㄢˇ</span>
+                </div>
+                <div class="vocabulary-item" onclick="showCharacterDetail('種', 'ㄓㄨㄥˇ', '禾', 14, '左右結構', this)">
+                    種 <span class="bopomofo-small">ㄓㄨㄥˇ</span>
+                </div>
+            </div>
+        </section>
+        
+        <section id="character-detail" class="character-detail">
+            <div class="character-header">
+                <div class="character-large" id="char-large">蟲</div>
+                <div class="character-info-basic">
+                    <h3>生字詳解</h3>
+                    <p>注音：<span id="char-bopomofo" class="bopomofo">ㄔㄨㄥˊ</span></p>
+                    <p>部首：<span id="char-radical">虫</span></p>
+                    <p>筆畫：<span id="char-strokes">18</span> 畫</p>
+                    <p>結構：<span id="char-structure">左右結構</span></p>
+                </div>
+            </div>
+            
+            <div class="character-info">
+                <div class="info-section">
+                    <h3><i class="fas fa-pen-nib"></i> 造詞</h3>
+                    <ul id="char-words">
+                        <li>書蟲</li>
+                        <li>蟲子</li>
+                        <li>昆蟲</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h3><i class="fas fa-language"></i> 成語</h3>
+                    <ul id="char-idioms">
+                        <li>雕蟲小技</li>
+                        <li>百足之蟲</li>
+                        <li>蟲魚之學</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h3><i class="fas fa-comment-alt"></i> 造句範例</h3>
+                    <ul id="char-sentences">
+                        <li>他愛看書，是個標準的小書<span class="highlight">蟲</span>。</li>
+                        <li>花園裡有許多昆<span class="highlight">蟲</span>。</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h3><i class="fas fa-lightbulb"></i> 字義解釋</h3>
+                    <ul id="char-meaning">
+                        <li>節肢動物的通稱</li>
+                        <li>比喻癡迷於某事物的人</li>
+                        <li>古代對動物的通稱</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="external-links">
+                <a href="https://pedia.cloud.edu.tw/Entry/Detail/?title=蟲" class="external-link" target="_blank" id="edu-link">
+                    <i class="fas fa-external-link-alt"></i> 教育百科 - 蟲
+                </a>
+                <a href="https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=蟲" class="external-link" target="_blank" id="idiom-link">
+                    <i class="fas fa-external-link-alt"></i> 成語典 - 蟲相關成語
+                </a>
+            </div>
+        </section>
+        
+        <section id="similar-characters">
+            <h2><span class="section-icon">3</span> 形近字比較</h2>
+            <div class="similar-characters">
+                <div class="character-group">
+                    <h3><i class="fas fa-exchange-alt"></i> 森 <span class="bopomofo">ㄙㄣ</span> vs 林 <span class="bopomofo">ㄌㄧㄣˊ</span></h3>
+                    <ul>
+                        <li>森：陰森、森林、森嚴</li>
+                        <li>林：竹林、樹林、林場</li>
+                    </ul>
+                </div>
+                
+                <div class="character-group">
+                    <h3><i class="fas fa-exchange-alt"></i> 王 <span class="bopomofo">ㄨㄤˊ</span> vs 土 <span class="bopomofo">ㄊㄨˇ</span></h3>
+                    <ul>
+                        <li>王：王子、王位、國王</li>
+                        <li>土：土地、泥土、土壤</li>
+                    </ul>
+                </div>
+                
+                <div class="character-group">
+                    <h3><i class="fas fa-exchange-alt"></i> 座 <span class="bopomofo">ㄗㄨㄛˋ</span> vs 坐 <span class="bopomofo">ㄗㄨㄛˋ</span></h3>
+                    <ul>
+                        <li>座：座號、後座、座位</li>
+                        <li>坐：坐下、坐車、坐姿</li>
+                    </ul>
+                </div>
+                
+                <div class="character-group">
+                    <h3><i class="fas fa-exchange-alt"></i> 百 <span class="bopomofo">ㄅㄞˇ</span> vs 白 <span class="bopomofo">ㄅㄞˊ</span></h3>
+                    <ul>
+                        <li>百：百姓、百年、百貨</li>
+                        <li>白：白天、白板、白色</li>
+                    </ul>
+                </div>
+                
+                <div class="character-group">
+                    <h3><i class="fas fa-exchange-alt"></i> 全 <span class="bopomofo">ㄑㄩㄢˊ</span> vs 金 <span class="bopomofo">ㄐㄧㄣ</span></h3>
+                    <ul>
+                        <li>全：完全、全家、全部</li>
+                        <li>金：金牌、黃金、金錢</li>
+                    </ul>
+                </div>
+                
+                <div class="character-group">
+                    <h3><i class="fas fa-exchange-alt"></i> 此 <span class="bopomofo">ㄘˇ</span> vs 止 <span class="bopomofo">ㄓˇ</span></h3>
+                    <ul>
+                        <li>此：因此、如此、此地</li>
+                        <li>止：停止、禁止、止步</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="polyphonic">
+            <h2><span class="section-icon">4</span> 多音字比較</h2>
+            <div class="polyphonic-characters">
+                <div class="polyphonic-group">
+                    <div class="polyphonic-title">
+                        <span class="character">從</span>
+                        <div>
+                            <h3>從 <span class="bopomofo">ㄘㄨㄥˊ</span></h3>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>自、由、向：從來、從頭到尾</li>
+                        <li>跟隨：跟從、力不從心</li>
+                        <li>依順：服從、順從</li>
+                    </ul>
+                </div>
+                
+                <div class="polyphonic-group">
+                    <div class="polyphonic-title">
+                        <span class="character">從</span>
+                        <div>
+                            <h3>從 <span class="bopomofo">ㄘㄨㄥ</span> (容)</h3>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>安適不緊張的樣子：從容</li>
+                    </ul>
+                </div>
+                
+                <div class="polyphonic-group">
+                    <div class="polyphonic-title">
+                        <span class="character">種</span>
+                        <div>
+                            <h3>種 <span class="bopomofo">ㄓㄨㄥˇ</span></h3>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>量詞。用於計算人或事物類別的單位：兩種動物</li>
+                        <li>人的族類：黃種人</li>
+                        <li>穀物、瓜果、蔬菜等的種子：菜種</li>
+                        <li>生物的延續：絕種</li>
+                        <li>事物的類別：種類</li>
+                    </ul>
+                </div>
+                
+                <div class="polyphonic-group">
+                    <div class="polyphonic-title">
+                        <span class="character">種</span>
+                        <div>
+                            <h3>種 <span class="bopomofo">ㄓㄨㄥˋ</span></h3>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>把種子或秧苗的根埋在土裡，讓它生長：種植</li>
+                        <li>注入體內：接種</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <a href="#" class="download-btn"><i class="fas fa-download"></i> 下載學習資料</a>
+   <a href="https://cat87031.github.io/chinese4/" class="external-link" target="_blank" id="idiom-link">
+                    <i class="fas fa-external-link-alt"></i> 第六課：從自己開始
+                </a>
+    </div>
+
+    <script>
+        // 生字資料庫
+        const characterData = {
+            '蟲': {
+                words: ['書蟲', '蟲子', '昆蟲', '害蟲', '幼蟲'],
+                idioms: ['雕蟲小技', '百足之蟲', '蟲魚之學', '雞蟲得失'],
+                sentences: [
+                    '他愛看書，是個標準的小書<span class="highlight">蟲</span>。',
+                    '花園裡有許多昆<span class="highlight">蟲</span>在飛舞。'
+                ],
+                meaning: [
+                    '節肢動物的通稱',
+                    '比喻癡迷於某事物的人',
+                    '古代對動物的通稱'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=蟲',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=蟲'
+            },
+            '森': {
+                words: ['森林', '森嚴', '陰森', '森羅', '森然'],
+                idioms: ['森羅萬象', '戒備森嚴', '壁壘森嚴'],
+                sentences: [
+                    '這片<span class="highlight">森</span>林裡有許多野生動物。',
+                    '故宮博物院戒備<span class="highlight">森</span>嚴。'
+                ],
+                meaning: [
+                    '樹木眾多的樣子',
+                    '眾多、繁密',
+                    '幽暗陰冷的'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=森',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=森'
+            },
+            '動': {
+                words: ['動物', '動作', '動畫', '運動', '活動'],
+                idioms: ['動人心弦', '驚天動地', '不動聲色', '聞風不動'],
+                sentences: [
+                    '獅子是兇猛的<span class="highlight">動</span>物。',
+                    '他做了一個優雅的<span class="highlight">動</span>作。'
+                ],
+                meaning: [
+                    '改變原來的位置或狀態',
+                    '行為、舉止',
+                    '開始做、進行'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=動',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=動'
+            },
+            '物': {
+                words: ['動物', '物品', '物質', '物價', '生物'],
+                idioms: ['物換星移', '物極必反', '物盡其用', '待人接物'],
+                sentences: [
+                    '大自然中有許多生<span class="highlight">物</span>。',
+                    '這家商店的<span class="highlight">物</span>品很齊全。'
+                ],
+                meaning: [
+                    '存在於天地間一切有形體的東西',
+                    '內容、實質',
+                    '人、眾人'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=物',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=物'
+            },
+            '王': {
+                words: ['王子', '國王', '王位', '王牌', '王者'],
+                idioms: ['王孫公子', '成王敗寇', '帝王將相', '擒賊擒王'],
+                sentences: [
+                    '<span class="highlight">王</span>子與公主從此過著幸福快樂的生活。',
+                    '他是我們球隊的王牌選手。'
+                ],
+                meaning: [
+                    '古代一國的君主',
+                    '首領、最強的',
+                    '姓'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=王',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=王'
+            },
+            '坐': {
+                words: ['坐下', '坐車', '坐姿', '坐鎮', '坐牢'],
+                idioms: ['坐井觀天', '坐立不安', '坐享其成', '平起平坐'],
+                sentences: [
+                    '請<span class="highlight">坐</span>下來慢慢說。',
+                    '我們<span class="highlight">坐</span>公車去學校。'
+                ],
+                meaning: [
+                    '將臀部放在椅子等物體上支持身體',
+                    '乘、搭',
+                    '居、處'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=坐',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=坐'
+            },
+            '午': {
+                words: ['上午', '中午', '下午', '午睡', '午飯'],
+                idioms: ['午時三刻', '祁奚舉午'],
+                sentences: [
+                    '<span class="highlight">午</span>後下了一場大雨。',
+                    '我每天<span class="highlight">午</span>休時間都會小睡一下。'
+                ],
+                meaning: [
+                    '地支的第七位',
+                    '白天十一時到一時為午時',
+                    '中午'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=午',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=午'
+            },
+            '停': {
+                words: ['停止', '停車', '停頓', '停歇', '停泊'],
+                idioms: ['馬不停蹄', '停雲落月', '鸞鵠停峙', '調停兩用'],
+                sentences: [
+                    '雨<span class="highlight">停</span>了，天空出現一道彩虹。',
+                    '這裡禁止<span class="highlight">停</span>車。'
+                ],
+                meaning: [
+                    '止住、中止',
+                    '暫時居留',
+                    '妥當、妥貼'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=停',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=停'
+            },
+            '座': {
+                words: ['座位', '座號', '講座', '星座', '寶座'],
+                idioms: ['座無虛席', '高朋滿座', '對號入座', '搖席破座'],
+                sentences: [
+                    '請按<span class="highlight">座</span>號入座。',
+                    '這個講<span class="highlight">座</span>很有意義。'
+                ],
+                meaning: [
+                    '席位',
+                    '器物的托架',
+                    '量詞，計算有底座或大型物體的單位'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=座',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=座'
+            },
+            '急': {
+                words: ['急忙', '着急', '急事', '急促', '急迫'],
+                idioms: ['急功近利', '急轉直下', '氣急敗壞', '十萬火急'],
+                sentences: [
+                    '他<span class="highlight">急</span>忙趕去學校。',
+                    '這是一件<span class="highlight">急</span>事，需要馬上處理。'
+                ],
+                meaning: [
+                    '緊迫、迫切',
+                    '匆促、迅速',
+                    '沒耐心、容易發怒'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=急',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=急'
+            },
+            '百': {
+                words: ['百貨', '百科', '百倍', '百分', '百姓'],
+                idioms: ['百發百中', '百折不撓', '百思不解', '百廢待舉'],
+                sentences: [
+                    '這本百科全書內容豐富。',
+                    '百貨公司正在打折。'
+                ],
+                meaning: [
+                    '數目字，十的十倍',
+                    '眾多的、所有的',
+                    '姓'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=百',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=百'
+            },
+            '科': {
+                words: ['科學', '科目', '科技', '科舉', '科室'],
+                idioms: ['科頭跣足', '發策決科', '金科玉律', '照本宣科'],
+                sentences: [
+                    '他喜歡研究<span class="highlight">科</span>學。',
+                    '現代<span class="highlight">科</span>技發展迅速。'
+                ],
+                meaning: [
+                    '學術或業務的類別',
+                    '法律、條目',
+                    '考核、審查'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=科',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=科'
+            },
+            '全': {
+                words: ['全部', '完全', '安全', '全面', '全體'],
+                idioms: ['全神貫注', '全力以赴', '十全十美', '面目全非'],
+                sentences: [
+                    '我<span class="highlight">全</span>力以赴完成任務。',
+                    '這個計畫需要<span class="highlight">全</span>面考慮。'
+                ],
+                meaning: [
+                    '完整、齊備',
+                    '整個、整體',
+                    '都、皆'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=全',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=全'
+            },
+            '原': {
+                words: ['原來', '原因', '原始', '原諒', '草原'],
+                idioms: ['原形畢露', '情有可原', '星火燎原', '逐鹿中原'],
+                sentences: [
+                    '<span class="highlight">原</span>來是你啊！',
+                    '請<span class="highlight">原</span>諒我的過錯。'
+                ],
+                meaning: [
+                    '本來、起初',
+                    '寬恕、諒解',
+                    '廣而平的地方'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=原',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=原'
+            },
+            '從': {
+                words: ['從此', '從來', '從前', '從容', '跟從'],
+                idioms: ['從善如流', '從長計議', '從一而終', '何去何從'],
+                sentences: [
+                    '<span class="highlight">從</span>此以後，他變得愛看書了。',
+                    '他做事<span class="highlight">從</span>容不迫。'
+                ],
+                meaning: [
+                    '自、由',
+                    '跟隨、隨行',
+                    '依順、聽從'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=從',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=從'
+            },
+            '此': {
+                words: ['從此', '因此', '如此', '此時', '此地'],
+                idioms: ['此起彼落', '由此可知', '樂此不疲', '厚此薄彼'],
+                sentences: [
+                    '<span class="highlight">此</span>地風景優美。',
+                    '他總是如<span class="highlight">此</span>認真。'
+                ],
+                meaning: [
+                    '這個、這裡',
+                    '這樣、如此',
+                    '這時候'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=此',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=此'
+            },
+            '管': {
+                words: ['管理', '管道', '管弦', '管轄', '管教'],
+                idioms: ['管中窺豹', '雙管齊下', '管鮑之交', '不管三七二十一'],
+                sentences: [
+                    '他負責<span class="highlight">管</span>理這個部門。',
+                    '這是一個重要的溝通<span class="highlight">管</span>道。'
+                ],
+                meaning: [
+                    '負責、處理',
+                    '圓而中空的物體',
+                    '約束、教導'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=管',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=管'
+            },
+            '種': {
+                words: ['種類', '種子', '種族', '各種', '品種'],
+                idioms: ['種瓜得瓜', '各種各樣', '亡國滅種', '龍生九種'],
+                sentences: [
+                    '這家店有各<span class="highlight">種</span>各樣的書籍。',
+                    '農夫播下<span class="highlight">種</span>子。'
+                ],
+                meaning: [
+                    '生物分類的階層',
+                    '人或其他生物的族類',
+                    '量詞，計算類別的單位'
+                ],
+                eduUrl: 'https://pedia.cloud.edu.tw/Entry/Detail/?title=種',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/idiomList.jsp?idiom=種'
+            }
+        };
+        
+        // 顯示生字詳情
+        function showCharacterDetail(character, bopomofo, radical, strokes, structure, element) {
+            // 移除所有項目的active類
+            document.querySelectorAll('.vocabulary-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // 為當前點擊的項目添加active類
+            if (element) {
+                element.classList.add('active');
+            }
+            
+            const detailSection = document.getElementById('character-detail');
+            const data = characterData[character] || {
+                words: ['詞1', '詞2', '詞3', '詞4', '詞5'],
+                idioms: ['成語1', '成語2', '成語3'],
+                sentences: ['例句1', '例句2'],
+                meaning: ['字義1', '字義2', '字義3'],
+                eduUrl: 'https://pedia.cloud.edu.tw/',
+                idiomUrl: 'https://dict.idioms.moe.edu.tw/'
+            };
+            
+            document.getElementById('char-large').textContent = character;
+            document.getElementById('char-bopomofo').textContent = bopomofo;
+            document.getElementById('char-radical').textContent = radical;
+            document.getElementById('char-strokes').textContent = strokes;
+            document.getElementById('char-structure').textContent = structure;
+            
+            // 更新詞語列表
+            const wordsList = document.getElementById('char-words');
+            wordsList.innerHTML = '';
+            data.words.forEach(word => {
+                const li = document.createElement('li');
+                li.textContent = word;
+                wordsList.appendChild(li);
+            });
+            
+            // 更新成語列表
+            const idiomsList = document.getElementById('char-idioms');
+            idiomsList.innerHTML = '';
+            data.idioms.forEach(idiom => {
+                const li = document.createElement('li');
+                li.textContent = idiom;
+                idiomsList.appendChild(li);
+            });
+            
+            // 更新例句列表
+            const sentencesList = document.getElementById('char-sentences');
+            sentencesList.innerHTML = '';
+            data.sentences.forEach(sentence => {
+                const li = document.createElement('li');
+                li.innerHTML = sentence;
+                sentencesList.appendChild(li);
+            });
+            
+            // 更新字義列表
+            const meaningList = document.getElementById('char-meaning');
+            meaningList.innerHTML = '';
+            data.meaning.forEach(meaning => {
+                const li = document.createElement('li');
+                li.textContent = meaning;
+                meaningList.appendChild(li);
+            });
+            
+            // 更新外部連結
+            document.getElementById('edu-link').href = data.eduUrl;
+            document.getElementById('edu-link').innerHTML = '<i class="fas fa-external-link-alt"></i> 教育百科 - ' + character;
+            
+            document.getElementById('idiom-link').href = data.idiomUrl;
+            document.getElementById('idiom-link').innerHTML = '<i class="fas fa-external-link-alt"></i> 成語典 - ' + character + '相關成語';
+            
+            // 顯示詳情區塊
+            detailSection.style.display = 'block';
+            
+            // 滾動到詳情區塊
+            detailSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // 滾動到指定區塊
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // 初始顯示第一個生字的詳情
+        document.addEventListener('DOMContentLoaded', function() {
+            showCharacterDetail('蟲', 'ㄔㄨㄥˊ', '虫', 18, '左右結構');
+        });
+    </script>
+</body>
+</html>
