@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小書蟲 - 第五課教學資源</title>
+    <title>114學年度上學期二年級國語南一版 - 第五課小書蟲</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -407,10 +407,10 @@
             <button class="nav-btn" onclick="scrollToSection('similar-characters')">形近字比較</button>
             <button class="nav-btn" onclick="scrollToSection('polyphonic')">多音字比較</button>
         </div>
-        
+
         <header>
-            <h1><i class="fas fa-book-open"></i> 小書蟲</h1>
-            <h2>第五課教學資源</h2>
+            <h1><i class="fas fa-book-open"></i> 114學年度上學期二年級國語</h1>
+            <h2>南一版 - 第五課：小書蟲</h2>
         </header>
         
         <section id="lesson-content">
